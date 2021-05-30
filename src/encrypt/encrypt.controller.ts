@@ -53,19 +53,14 @@ export class EncryptController {
   }
 
   @Post('decrypt')
-  @ApiConsumes('multipart/form-data')
-  @ApiFiles('file')
-  @UseInterceptors(FileInterceptor('file'))
   @HttpCode(HttpStatus.OK)
-  public async decryptFile(
+  public decryptFile(
     @Body() decryptDto: DecryptFileDto,
-    @UploadedFile(FileValidator)
-    file: Express.Multer.File,
-  ): Promise<DecryptedFileResponse> {
+  ): DecryptedFileResponse {
     return {
-      decryptedFile: await this.encryptService.decryptUserFile(
+      decryptedFile: this.encryptService.decryptUserFile(
         decryptDto.privateKey,
-        file.buffer,
+        decryptDto.encryptedFile,
       ),
     };
   }

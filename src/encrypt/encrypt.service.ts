@@ -35,8 +35,10 @@ export class EncryptService {
     ).toString('base64');
   }
 
-  public decryptUserFile(key: string, content: Buffer): string {
-    const buffers = EncryptService.getBufferChunksToDecrypt(content);
+  public decryptUserFile(key: string, content: string): string {
+    const buffers = EncryptService.getBufferChunksToDecrypt(
+      Buffer.from(content, 'base64'),
+    );
     const keyBuffer = Buffer.from(key);
 
     return Buffer.concat(
@@ -78,7 +80,7 @@ export class EncryptService {
   }
 
   private static getBufferChunksToDecrypt(buffer: Buffer): Buffer[] {
-    const buffersCount = buffer.length / RSA_KEY_BYTES;
+    const buffersCount = Math.ceil(buffer.length / RSA_KEY_BYTES);
 
     return new Array(buffersCount).fill(null).map((chunk, index) => {
       const offset = index * RSA_KEY_BYTES;

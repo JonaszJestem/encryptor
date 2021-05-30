@@ -6,4 +6,9 @@ export class DecryptFileDto {
   @IsString()
   @ApiProperty()
   public privateKey!: string;
+
+  @IsNotEmpty()
+  @IsString()
+  @ApiProperty()
+  public encryptedFile!: string;
 }
