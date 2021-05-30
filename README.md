@@ -1,3 +1,16 @@
+# Setup
+1. `copy .env.example .env`
+2. Fill `.env` with desired values
+3. `make start` to start application
+4. `make seed` to seed database with 10 users:
+```
+user-0@example.com / password
+user-1@example.com / password
+user-2@example.com / password
+[...]
+```
+5. Swagger available under `localhost:3000/docs`
+
 # NodeJS task
 
 Write NodeJS app that has 3 endpoints

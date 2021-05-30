@@ -4,9 +4,7 @@ import {
   HttpCode,
   HttpStatus,
   Post,
-  Req,
   UploadedFile,
-  UploadedFiles,
   UseGuards,
   UseInterceptors,
 } from '@nestjs/common';
@@ -15,10 +13,7 @@ import { AuthGuard } from '@nestjs/passport';
 import { KeyPairResponse } from './dto/key-pair.response';
 import { User } from '../user/user.entity';
 import { GetUser } from '../utils/decorators/get-user.decorator';
-import {
-  FileFieldsInterceptor,
-  FileInterceptor,
-} from '@nestjs/platform-express';
+import { FileInterceptor } from '@nestjs/platform-express';
 import { EncryptedFileResponse } from './dto/encrypted-file.response';
 import { ApiBearerAuth, ApiConsumes, ApiTags } from '@nestjs/swagger';
 import { ApiTag } from '../utils/docs/swagger.config';
