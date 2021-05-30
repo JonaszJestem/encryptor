@@ -1,5 +1,5 @@
 # Setup
-1. `copy .env.example .env`
+1. `cp .env.example .env`
 2. Fill `.env` with desired values
 3. `make start` to start application
 4. `make seed` to seed database with 10 users:
